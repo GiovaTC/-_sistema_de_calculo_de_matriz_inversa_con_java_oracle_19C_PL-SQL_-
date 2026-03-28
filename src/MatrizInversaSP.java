@@ -37,9 +37,6 @@ public class MatrizInversaSP {
         sc.close();
     }
 
-    private static void guardarConSP(int n, double[][] matriz, double[][] inversa) {
-    }
-
     private static double[][] calcularInversa(double[][] matriz) {
         int n = matriz.length;
         double[][] aug = new double[n][2 * n];
@@ -104,5 +101,37 @@ public class MatrizInversaSP {
         return sb.toString();
     }
 
-    
+    // llamada al procedimiento .
+    public static void guardarConSP(int n, double[][] original, double[][] inversa) {
+
+        String call = "{CALL SP_GUARDAR_MATRIZ_INVERSA(?, ?, ?)}";
+
+        try (Connection conn = DriverManager.getConnection(URL, USER, PASS);
+             CallableStatement cs = conn.prepareCall(call)) {
+
+            cs.setInt(1, n);
+            cs.setString(2, matrizToString(original));
+            cs.setString(3, matrizToString(inversa));
+
+            cs.execute();
+
+            System.out.println("\n💾 Guardado mediante procedimiento almacenado");
+
+         } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
+
+/* 🧪 3. Ejecución Esperada
+📥 Entrada
+3
+1 0 2
+0 1 0
+3 0 1
+
+📤 Salida
+✅ Matriz Inversa:
+   -0.2000    0.0000    0.4000
+    0.0000    1.0000    0.0000
+    0.6000    0.0000   -0.2000 */   

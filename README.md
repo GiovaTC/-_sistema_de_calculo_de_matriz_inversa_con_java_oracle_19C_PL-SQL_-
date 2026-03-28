@@ -3,6 +3,8 @@
 
 <img width="1024" height="1024" alt="image" src="https://github.com/user-attachments/assets/d4ba79f0-7438-4d33-8665-174050889195" />  
 
+<img width="2548" height="1076" alt="image" src="https://github.com/user-attachments/assets/c233d720-fa7b-47db-82e2-417e0f86b560" />        
+
 ```
 
 Se presenta una solución empresarial integrando:
